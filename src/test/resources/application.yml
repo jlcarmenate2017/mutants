@@ -1,0 +1,33 @@
+server:
+  port: 8080
+spring:
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration
+  application:
+    name: mutants
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+mutants:
+  clientApp:
+    name: 'Mutants'
+  mongodb:
+    primary:
+      uri: mongodb://localhost:27017
+      collections:
+        mutants: meli-mutant
+---
+spring:
+  config:
+    activate:
+      on-profile: qa
+mutants:
+  clientApp:
+    name: 'Mutants'
+  mongodb:
+    primary:
+      uri: mongodb://localhost:27020
+      collections:
+        mutants: meli-mutant
